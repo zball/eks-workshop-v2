@@ -109,7 +109,7 @@ aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EK
 +-------------+-----------+-----------+
 | desiredSize |  maxSize  |  minSize  |
 +-------------+-----------+-----------+
-|  3          |  3        |  3        |
+|  3          |  3        |  0        |
 +-------------+-----------+-----------+
 ```
 

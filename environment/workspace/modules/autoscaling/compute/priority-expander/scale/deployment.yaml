@@ -3,13 +3,13 @@ kind: Deployment
 metadata:
   name: orders
 spec:
-  replicas: 5
+  replicas: 7
   template:
     spec:
       containers:
         - name: orders
           resources:
             limits:
-              cpu: "2"
+              cpu: "1"
             requests:
-              cpu: "2"
+              cpu: "1"
