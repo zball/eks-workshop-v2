@@ -2,6 +2,9 @@ locals {
   default_mng_min  = 3
   default_mng_max  = 6
   default_mng_size = 3
+  default_rsv_min  = 0
+  default_rsv_max  = 3
+  default_rsv_size = 0  
 }
 
 module "aws-eks-accelerator-for-terraform" {
@@ -68,6 +71,18 @@ module "aws-eks-accelerator-for-terraform" {
       min_size     = local.default_mng_min
       max_size     = local.default_mng_max
       desired_size = local.default_mng_size
+
+      k8s_labels = {
+        workshop-default = "yes"
+      }
+    },
+    mg_6 = {
+      node_group_name = "managed-reserved"
+      instance_types  = ["t3.small"]
+      subnet_ids      = module.aws_vpc.private_subnets
+      min_size     = local.default_rsv_min
+      max_size     = local.default_rsv_max
+      desired_size = local.default_rsv_size
 
       k8s_labels = {
         workshop-default = "yes"

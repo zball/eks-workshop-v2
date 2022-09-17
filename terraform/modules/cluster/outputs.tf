@@ -18,6 +18,11 @@ output "eks_cluster_nodegroup_name" {
   value       = module.aws-eks-accelerator-for-terraform.managed_node_groups_id[0]
 }
 
+output "eks_cluster_priority_nodegroup_name" {
+  description = "Amazon EKS Cluster node group name"
+  value       = module.aws-eks-accelerator-for-terraform.managed_node_groups_id[1]
+}
+
 output "eks_cluster_nodegroup_size_min" {
   description = "Amazon EKS Cluster node group min size"
   value       = local.default_mng_min
