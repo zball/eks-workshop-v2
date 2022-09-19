@@ -1,6 +1,6 @@
 ---
 title: "Priority Expander"
-sidebar_position: 20
+sidebar_position: 45
 ---
 
 ## What is Priority Expander with Cluster Autoscaler?

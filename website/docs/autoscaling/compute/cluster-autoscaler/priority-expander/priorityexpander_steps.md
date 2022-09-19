@@ -1,6 +1,6 @@
 ---
 title: "Configure Priority Expander with CA"
-sidebar_position: 40
+sidebar_position: 10
 ---
 
 ## Assign Priorities to the Node groups 
@@ -15,13 +15,13 @@ autoscaling/compute/priority-expander/setup/configmap.yaml
 
 Let's apply this to our cluster:
 
-```bash test=false
-kubectl apply -k /workspace/modules/autoscaling/compute/priority-expander/setup
+```bash
+$ kubectl apply -k /workspace/modules/autoscaling/compute/priority-expander/setup
 ```
 
 Verify ConfigMap with the command. It should display the priority of node groups:
 ```bash
-kubectl describe configmap cluster-autoscaler-priority-expander -n kube-system
+$ kubectl describe configmap cluster-autoscaler-priority-expander -n kube-system
 Name:         cluster-autoscaler-priority-expander
 Namespace:    kube-system
 Labels:       <none>
@@ -42,7 +42,7 @@ priorities:
 By default, Cluster Autoscaler does not use the priorty ConfigMap. You will patch the Cluster Autoscaler to utilize the priorities we configured in the previous step. Run the below command to do so. The last option `--expander=priority` achieves this.
 
 ```bash
-kubectl patch deployment cluster-autoscaler-aws-cluster-autoscaler -n kube-system \
+$ kubectl patch deployment cluster-autoscaler-aws-cluster-autoscaler -n kube-system \
   -p '{"spec": {"template": {"spec": {"containers": [{"name": "cluster-autoscaler-aws-cluster-autoscaler","command": ["./cluster-autoscaler","--v=4","--stderrthreshold=info","--cloud-provider=aws","--skip-nodes-with-local-storage=false","--expander=least-waste","--node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/eks-workshop-cluster","--balance-similar-node-groups","--skip-nodes-with-system-pods=false","--expander=priority"]}]}}}}'
 ```
 
@@ -53,7 +53,7 @@ Now let us scale the application and see how the node groups scale.
 Run the below commands to find out how many EC2s are running in managed-ondemand node group. The output shows there are currently 3 instances running for the managed-ondemand node group, while the max capacity is 6.
 
 ```bash
-aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_DEFAULT_MNG_NAME --query nodegroup.scalingConfig --output table
+$ aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_DEFAULT_MNG_NAME --query nodegroup.scalingConfig --output table
 ---------------------------------------
 |          DescribeNodegroup          |
 +-------------+-----------+-----------+
@@ -66,7 +66,7 @@ aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EK
 Run the below commands to find out how many EC2s are running in managed-reserved node group. The output shows there are currently 0 instances running for the managed-reserved node group, while the max capacity is 3.
 
 ```bash
-aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_PRIORITY_MNG_NAME --query nodegroup.scalingConfig --output table
+$ aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_PRIORITY_MNG_NAME --query nodegroup.scalingConfig --output table
 ---------------------------------------
 |          DescribeNodegroup          |
 +-------------+-----------+-----------+
@@ -88,13 +88,13 @@ Deployment/orders
 Let's apply this to our cluster:
 
 ```bash hook=pa-pod-scaleout timeout=180
-kubectl apply -k /workspace/modules/autoscaling/compute/priority-expander/scale
+$ kubectl apply -k /workspace/modules/autoscaling/compute/priority-expander/scale
 ```
 
 View the cluster-autoscaler logs
 
 ```bash test=false
-kubectl -n kube-system logs \
+$ kubectl -n kube-system logs \
   -f deployment/cluster-autoscaler-aws-cluster-autoscaler
 ```
 
@@ -103,7 +103,7 @@ Check the [EC2 AWS Management Console](https://console.aws.amazon.com/ec2/home?#
 Run the following. This shows that higher priority nodegroup `managed-reserved` scaled first to it's max size.
 
 ```bash
-aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_PRIORITY_MNG_NAME --query nodegroup.scalingConfig --output table
+$ aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_PRIORITY_MNG_NAME --query nodegroup.scalingConfig --output table
 ---------------------------------------
 |          DescribeNodegroup          |
 +-------------+-----------+-----------+
@@ -114,7 +114,7 @@ aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EK
 ```
 
 ```bash
-aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_DEFAULT_MNG_NAME --query nodegroup.scalingConfig --output table
+$ aws eks describe-nodegroup --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_DEFAULT_MNG_NAME --query nodegroup.scalingConfig --output table
 ---------------------------------------
 |          DescribeNodegroup          |
 +-------------+-----------+-----------+
