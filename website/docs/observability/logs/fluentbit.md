@@ -1,7 +1,6 @@
 ---
 title: "Install Fluent Bit"
-sidebar_position: 5
-weight: 35
+sidebar_position: 30
 ---
 
 [Fluent Bit](https://fluentbit.io/) is a lightweight log processor and forwarder that allows you to collect data and logs from different sources, unify them and send them to multiple destinations.
