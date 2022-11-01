@@ -17,9 +17,7 @@ The application has several components and dependencies:
 
 ## Deploying the application
 
-The sample application is composed of a set of Kubernetes manifests organized in a way that can be easily applied with Kustomize. This allows us to not only make the manifests easier to break apart and navigate, but also incrementally apply overlays and patches as we work through the various modules of this workshop.
-
-If you want to understand more about Kustomize take a look at the [optional module](./kustomize.md) provided in this workshop.
+The sample application is composed of a set of Kubernetes manifests organized in a way that can be easily applied with Kustomize. Kustomize is an open-source capability and is a native feature of the `kubectl` CLI. This workshop uses Kustomize to apply changes to Kubernetes manifests, making it easier to understand changes to manifest files without needing to manually edit YAML. As we work through the various modules of this workshop, we will incrementally apply overlays and patches with Kustomize. To learn more about Kustomize, you can refer to the official Kubernetes [documentation](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/).
 
 There are different ways you can browse the manifests for the sample application depending on your comfort level. One way is to take a look at the GitHub repository for this workshop:
 
@@ -103,7 +101,7 @@ $ kubectl apply -k /workspace/manifests
 
 ## Exploring the application
 
-You can start to explore the example application thats been deployed for you. The initial state of the application is that its completely self-contained in the EKS cluster. Each microservice is deployed to its own separate `Namespace` to provide some degree of isolation.
+You can start to explore the example application thats been deployed for you. Initialy, the application is completely self-contained in the Amazon EKS cluster, without using any external services on AWS. Each microservice is deployed to its own separate `Namespace` to provide some degree of isolation.
 
 ```bash
 $ kubectl get namespaces -l app.kubernetes.io/created-by=eks-workshop
@@ -118,7 +116,7 @@ other      Active   5h6m
 ui         Active   5h6m
 ```
 
-Most of the components are modeled using the `Deployment` resource in its respective namespace:
+Most of the components are modeled using the `Deployment` resource in its respective namespace. The following command gets all deployments across all namespaces with the label `app.kubernetes.io/created-by=eks-workshop`.
 
 ```bash
 $ kubectl get deployment -l app.kubernetes.io/created-by=eks-workshop -A

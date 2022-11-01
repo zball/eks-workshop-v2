@@ -15,9 +15,9 @@ const manifestsDir = `${rootDir}/../environment/workspace/modules`;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'EKS Workshop',
+  title: 'CON 204: Getting started with Amazon EKS',
   tagline:
-    'Practical exercises to learn about Amazon Elastic Kubernetes Service',
+    'Learn the basics of Amazon Elastic Kubernetes Service',
   url: 'https://eksworkshop-v2-next.netlify.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -61,7 +61,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'EKS Workshop',
+        title: 'EKS Workshop (re:Invent)',
         logo: {
           alt: 'Amazon Web Services',
           src: 'img/logo.svg',
@@ -110,12 +110,6 @@ const config = {
             label: 'Cost Optimization',
           },
           {
-            type: 'doc',
-            docId: 'gitops/index',
-            position: 'left',
-            label: 'GitOps',
-          },
-          {
             href: 'https://github.com/aws-samples/eks-workshop-v2',
             position: 'right',
             className: 'header-github-link',
@@ -139,7 +133,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://github.com/aws-samples/eks-workshop-v2',
               },
             ],
           },
