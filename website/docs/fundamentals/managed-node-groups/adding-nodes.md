@@ -8,7 +8,12 @@ While working with your cluster, you may need to update your managed node group 
 
 Next, click the `eks-workshop-cluster`, select the **Compute** tab, and select the node group to edit and choose **Edit**.
 
-On the **Edit node group** page, you can see the following settings under **Node group scaling configuration**: **Desired size**, **Minimum size** and **Maximum size**. Bump the **minimum size** *and* **desired size** from `2` to `3`. Scroll down and hit **Save changes**.
+On the **Edit node group** page, you can see the following settings under **Node group scaling configuration**: 
+* **Desired size**
+* **Minimum size** an
+* **Maximum size**.
+
+Bump the **minimum size** *and* **desired size** from `2` to `3`. Scroll down and hit **Save changes**.
 
 
 ![Added nodes in UI](./assets/added-nodes.png)
@@ -35,10 +40,10 @@ Let's retrieve the nodegroup configutation again and look at `MIN SIZE`, `MAX SI
 $ eksctl get nodegroup --name $EKS_DEFAULT_MNG_NAME --cluster $EKS_CLUSTER_NAME
 ```
 
-You can also review changed **Kubernetes** node count with following command:
+You can also review changed **Kubernetes** node count with following command, which gets all nodes in our managed node group by using the label as a filter:
 
 ```bash
-$ kubectl get nodes
+$ kubectl get nodes -l eks.amazonaws.com/nodegroup=$EKS_DEFAULT_MNG_NAME
 ```
 
 To remove nodes, change the nodegroup configuration with command given below:
