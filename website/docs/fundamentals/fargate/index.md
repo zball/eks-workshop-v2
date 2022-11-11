@@ -3,6 +3,15 @@ title: Fargate
 sidebar_position: 20
 ---
 
+:::tip Before you start
+Prepare your environment for this section:
+
+```bash timeout=300 wait=30
+$ reset-environment 
+```
+
+:::
+
 [AWS Fargate](https://aws.amazon.com/fargate/)  is a technology that provides on-demand, right-sized compute capacity for containers. With AWS Fargate, you don't have to provision, configure, or scale groups of virtual machines on your own to run containers. You also don't need to choose server types, decide when to scale your node groups, or optimize cluster packing. You can control which pods start on Fargate and how they run with Fargate profiles. Fargate profiles are defined as part of your Amazon EKS cluster.
 
 ![Fargate Architecture](./assets/fargate.png)
