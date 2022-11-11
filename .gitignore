@@ -14,3 +14,5 @@ env
 *.zip
 
 cdk.out
+
+.DS_Store
