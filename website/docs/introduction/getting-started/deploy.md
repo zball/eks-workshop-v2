@@ -5,8 +5,6 @@ sidebar_position: 10
 
 The workshop modules use a sample microservices application to demonstrate the various concepts related to EKS. The sample application is composed of a set of Kubernetes manifests organized in a way that can be easily applied with Kustomize. This allows us to not only make the manifests easier to break apart and navigate, but also incrementally apply overlays and patches as we work through the various modules of this workshop.
 
-If you want to understand more about Kustomize take a look at the [optional module](../kustomize.md) provided in this workshop.
-
 There are different ways you can browse the manifests for the sample application depending on your comfort level. One way is to take a look at the GitHub repository for this workshop:
 
   [https://github.com/aws-samples/eks-workshop-v2/tree/main/environment/workspace/manifests](https://github.com/aws-samples/eks-workshop-v2/tree/main/environment/workspace/manifests)
