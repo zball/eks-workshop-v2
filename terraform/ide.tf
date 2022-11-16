@@ -53,7 +53,7 @@ module "ide" {
   subnet_id        = module.cluster.public_subnet_ids[0]
 
   additional_cloud9_policy_arns = [
-    "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+    "arn:aws:iam::aws:policy/AdministratorAccess"
   ]
 
   additional_cloud9_policies = [
