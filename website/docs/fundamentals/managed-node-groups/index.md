@@ -16,7 +16,7 @@ $ reset-environment
 
 ![Managed Node Groups](./assets/managed-node-groups.png)
 
-Advantages of running Amazon EKS managed node groups (MNG) include:
+Advantages of running Amazon EKS managed node groups include:
 
 * Create, automatically update, or terminate nodes with a single operation using the Amazon EKS console, `eksctl`, AWS CLI, AWS API, or infrastructure as code tools including AWS CloudFormation and Terraform
 * Provisioned nodes run using the latest Amazon EKS optimized AMIs
