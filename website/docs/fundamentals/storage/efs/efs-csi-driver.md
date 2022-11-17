@@ -30,10 +30,10 @@ $ aws efs describe-file-systems --file-system-id $EFS_ID
 
 Now we will need to create [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) object configured using the previously created [Amazon Elastic File System](https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html) as part of this workshop infrastructure and use [EFS Access points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html) as provisioning mode.
 
-we will be using Kustomize to create for us the storage class and to ingest the environment variable "EFS_ID" in the paramter filesystemid value in the configuration of the storage class object: 
+We will be using Kustomize to create for us the storage class and to ingest the environment variable "EFS_ID" in the paramter filesystemid value in the configuration of the storage class object: 
 
 ```bash
-$ kubectl apply -k modules/fundamentals/storage/efs/storageclass 
+$ kubectl apply -k /workspace/modules/fundamentals/storage/efs/storageclass 
 storageclass.storage.k8s.io/efs-sc created
 configmap/assets-efsid-48hg67g6fd created
 ```
