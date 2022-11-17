@@ -26,8 +26,7 @@ ui     alb     *       k8s-ui-ui-1268651632.us-west-2.elb.amazonaws.com   80    
 Now that our application is exposed to the outside world, lets try to access it. Get the URL from the `Ingress` resource:
 
 ```bash
-$ kubectl -n kube-system get ingress -n ui ui -o json | jq \
-    -r '.status.loadBalancer.ingress[0].hostname'
+$ kubectl get ingress -n ui ui -o jsonpath="{.status.loadBalancer.ingress[*].hostname}{'\n'}"
 k8s-ui-ui-a9797f0f61.elb.us-west-2.amazonaws.com
 ```
 
