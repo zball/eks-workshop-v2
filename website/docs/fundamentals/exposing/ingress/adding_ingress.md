@@ -23,9 +23,7 @@ NAME   CLASS   HOSTS   ADDRESS                                            PORTS 
 ui     alb     *       k8s-ui-ui-1268651632.us-west-2.elb.amazonaws.com   80      15s
 ```
 
-Now that our application is exposed to the outside world, lets try to access it.
-
-Get the URL from the `Ingress` resource:
+Now that our application is exposed to the outside world, lets try to access it. Get the URL from the `Ingress` resource:
 
 ```bash
 $ kubectl -n kube-system get ingress -n ui ui -o json | jq \
@@ -33,7 +31,11 @@ $ kubectl -n kube-system get ingress -n ui ui -o json | jq \
 k8s-ui-ui-a9797f0f61.elb.us-west-2.amazonaws.com
 ```
 
-And access it in your web browser. You will see the UI from the web store displayed and will be able to navigate around the site as a user.
+Access it in your web browser. You will see the UI from the web store displayed and will be able to navigate around the site as a user.
+
+:::note
+You may need to wait 3-5 minutes before the link begins to work. 
+:::
 
 <browser url='http://k8s-ui-ui-a9797f0f61.elb.us-west-2.amazonaws.com'>
 <img src={require('./assets/web-ui.png').default}/>

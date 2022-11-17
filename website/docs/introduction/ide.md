@@ -13,7 +13,7 @@ When the main Cloud9 screen opens expand the menu on the left side of the screen
 
 ![Access Cloud9 service menu](./assets/menu.png)
 
-Then select **Shared with you**. There is a Cloud9 environment available with a name that contains **EKSLabIDE**, which can be launched using the **Open IDE** button.
+Click on **Environments**, then select **All environments** in the drop-down. There should be a Cloud9 environment available **eks-workshop-cluster**, which can be launched using the **Open** button.
 
 ![Open the Cloud9 IDE](./assets/environment.png)
 

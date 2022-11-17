@@ -3,12 +3,14 @@ title: "Introduction"
 sidebar_position: 10
 ---
 
-Run the following command to setup the EKS cluster for this module:
+:::tip Before you start
+Prepare your environment for this section:
 
 ```bash timeout=300 wait=30
 $ reset-environment 
 ```
 
+:::
 We can confirm our service is only accessible internally by taking a look at the current `Service` resources in the cluster:
 
 ```bash
