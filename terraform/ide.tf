@@ -82,12 +82,16 @@ cp /tmp/repository-archive/environment/bin/* /usr/local/bin
 
 rm -rf /tmp/repository-archive
 
+sudo -H -u ec2-user bash -c "ln -s /workspace ~/environment/workspace"
+
 if [[ ! -d "/home/ec2-user/.bashrc.d" ]]; then
   sudo -H -u ec2-user bash -c "mkdir -p ~/.bashrc.d"
   sudo -H -u ec2-user bash -c "touch ~/.bashrc.d/dummy.bash"
 
   sudo -H -u ec2-user bash -c "echo 'for file in ~/.bashrc.d/*.bash; do source \"\$file\"; done' >> ~/.bashrc"
 fi
+
+sudo -H -u ec2-user bash -c "echo 'export AWS_PAGER=\"\"' > ~/.bashrc.d/aws.bash"
 
 sudo -H -u ec2-user bash -c "echo 'aws eks update-kubeconfig --name ${module.cluster.eks_cluster_id}' > ~/.bashrc.d/kubeconfig.bash"
 

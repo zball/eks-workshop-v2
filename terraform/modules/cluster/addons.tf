@@ -122,6 +122,11 @@ module "eks-blueprints-kubernetes-addons" {
     timeout = 600
 
     set = concat([{
+        name  = "replicas"
+        value = "1"
+        type  = "auto"
+      },
+      {
       name  = "aws.defaultInstanceProfile"
       value = module.eks-blueprints.managed_node_group_iam_instance_profile_id[0]
       },
@@ -198,11 +203,18 @@ module "eks-blueprints-kubernetes-addons" {
     local.system_component_values)
   }
 
+  aws_for_fluentbit_cw_log_group_name = "/${module.eks-blueprints.eks_cluster_id}/worker-fluentbit-logs-${random_string.fluentbit_log_group.result}"
+
   amazon_eks_adot_config = {
     kubernetes_version = var.cluster_version
   }
 
   tags = local.tags
+}
+
+resource "random_string" "fluentbit_log_group" {
+  length           = 6
+  special          = false
 }
 
 locals {
@@ -253,9 +265,30 @@ module "eks-blueprints-kubernetes-grafana-addon" {
 
   addon_context = local.addon_context
 
+  irsa_policies = [
+    aws_iam_policy.grafana.arn
+  ]
+
   helm_config = {
     values = [templatefile("${path.module}/templates/grafana.yaml", { prometheus_endpoint = aws_prometheus_workspace.this.prometheus_endpoint, region = data.aws_region.current.name })]
   }
+}
+
+resource "aws_iam_policy" "grafana" {
+  name        = "${local.cluster_name}-grafana-other"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "aps:*",
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
 }
 
 module "descheduler" {

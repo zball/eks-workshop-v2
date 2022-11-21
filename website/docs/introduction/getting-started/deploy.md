@@ -82,7 +82,3 @@ $ tree --dirsfirst /workspace/manifests
 ```
 
 To deploy the application, run the following `kubectl` command:
-
-```bash timeout=300 wait=30
-$ kubectl apply -k /workspace/manifests
-```
