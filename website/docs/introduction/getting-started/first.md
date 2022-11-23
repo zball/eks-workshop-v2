@@ -107,13 +107,13 @@ catalog-846479dcdd-fznf5   1/1     Running   2 (43s ago)   46s
 catalog-mysql-0            1/1     Running   0             46s
 ```
 
-Notice we have a Pod for our catalog API and another for the MySQL database. The `catalog` Pod is showing a status of `CrashLoopBackOff`. This is because it needs to be able to connec tto the `catalog-mysql` Pod before it will start, and Kubernetes will keep restarting it until this is the case. Luckily we can use `kubectl wait` to monitor specific Pods until they are in a Ready state:
+Notice we have a Pod for our catalog API and another for the MySQL database. The `catalog` Pod is showing a status of `CrashLoopBackOff`. This is because it needs to be able to connect to the `catalog-mysql` Pod before it will start, and Kubernetes will keep restarting it until this is the case. Luckily, we can use `kubectl wait` to monitor specific Pods until they are in a Ready state:
 
 ```bash
 $ kubectl wait --for=condition=Ready pods --all -n catalog --timeout=180s 
 ```
 
-Now that the Pods are running lets take at the Services created:
+Now that the Pods are running lets take a look at the Services created:
 
 ```bash
 $ kubectl get svc -n catalog
@@ -122,11 +122,11 @@ catalog         ClusterIP   172.20.83.84     <none>        80/TCP     2m48s
 catalog-mysql   ClusterIP   172.20.181.252   <none>        3306/TCP   2m48s
 ```
 
-These Services are internal to the cluster, so we cannot access them from the Internet or even the VPC. However, we can use [exec](https://kubernetes.io/docs/tasks/debug/debug-application/get-shell-running-container/) to access an existing Pod in the EKS cluster to check the catalog API is working:
+These Services are internal to the cluster, so we cannot access them from the Internet or even the VPC. However, we can use [exec](https://kubernetes.io/docs/tasks/debug/debug-application/get-shell-running-container/) to access an existing Pod in the EKS cluster to check that the catalog API is working:
 
 ```bash
 $ kubectl -n catalog exec -it \
   deployment/catalog -- curl catalog.catalog.svc/catalogue | jq .
 ```
 
-You should receive back a JSON payload with product information. Congratulations, you've just deployed your first microservice to Kubernetes with EKS!
+You should receive a JSON payload with product information. Congratulations! You've just deployed your first microservice to Kubernetes with EKS!

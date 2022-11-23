@@ -15,13 +15,13 @@ Notice that the catalog API is in this kustomization, didn't we already deploy i
 Because Kubernetes uses a declarative mechanism we can apply the manifests for the catalog API again and expect that because all of the resources are already created Kubernetes will take no action.
 :::
 
-Apply this kustomization to our cluster to deploy the rest of the components:
+Run kustomization to deploy the rest of the components:
 
 ```bash
 $ kubectl apply -k /workspace/manifests
 ```
 
-After this is complete we can use `kubectl wait` to make sure all the components have started before we proceed:
+You can use `kubectl wait` to make sure all the components have started before we proceed:
 
 ```bash
 $ kubectl wait --for=condition=Ready --timeout=120s pods \
@@ -59,7 +59,7 @@ orders      orders-mysql     1/1     1            1           90s
 ui          ui               1/1     1            1           90s
 ```
 
-The sample application is now deployed and ready to provide a foundation for us to use in the rest of the labs in this workshop!
+Now that the sample application has been deployed, it is ready to serve as a foundation for the remaining labs in this workshop!
 
 :::tip
 If you want to understand more about Kustomize take a look at the [optional module](../kustomize.md) provided in this workshop.

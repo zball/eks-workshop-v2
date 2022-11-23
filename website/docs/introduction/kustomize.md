@@ -3,7 +3,7 @@ title: Kustomize (optional)
 sidebar_position: 40
 ---
 
-[Kustomize](https://kustomize.io/) allows you to manage Kubernetes manifest files using declarative "kustomization" files. It provides the ability to express "base" manifests for your Kubernetes resources and then apply changes using composition, customization and easily making cross-cutting changes across many resources.
+[Kustomize](https://kustomize.io/) allows you to manage Kubernetes manifest files using declarative "kustomization" files. It provides the ability to express "base" manifests for your Kubernetes resources and then apply changes using composition, kustomization, and easily making cross-cutting changes across many resources.
 
 For example, take a look at the following manifest file for the `checkout` Deployment:
 
