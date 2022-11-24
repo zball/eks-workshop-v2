@@ -29,5 +29,7 @@ jobs:
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_REINVENT_SITE_ID }}
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       run: |
+        source .kustomize-env
+        
         npm install
         npm run deploy:netlify -- --prod
