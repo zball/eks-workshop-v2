@@ -108,12 +108,6 @@ const config = {
             label: 'Networking',
           },
           {
-            type: 'doc',
-            docId: 'costoptimization/index',
-            position: 'left',
-            label: 'Cost Optimization',
-          },
-          {
             href: 'https://github.com/aws-samples/eks-workshop-v2',
             position: 'right',
             className: 'header-github-link',
