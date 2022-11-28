@@ -127,27 +127,13 @@ const config = {
       footer: {
         links: [
           {
-            title: 'Community',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/aws-samples/eks-workshop-v2',
-              },
-            ],
+            label: 'Site Terms',
+            href: 'https://aws.amazon.com/terms/?nc1=f_pr',
           },
           {
-            title: 'Other',
-            items: [
-              {
-                label: 'Site Terms',
-                href: 'https://aws.amazon.com/terms/?nc1=f_pr',
-              },
-              {
-                label: 'Privacy',
-                href: 'https://aws.amazon.com/privacy/?nc1=f_pr',
-              },
-            ],
-          },
+            label: 'Privacy',
+            href: 'https://aws.amazon.com/privacy/?nc1=f_pr',
+          }
         ],
         copyright: `© ${new Date().getFullYear()}, Amazon Web Services, Inc. or its affiliates. All rights reserved.`,
       },

@@ -35,8 +35,8 @@ export default function Home() {
       description="Amazon Web Services workshop for Elastic Kubernetes Service">
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
         <HomepageVideo />
+        <HomepageFeatures />
       </main>
     </Layout>
   );
