@@ -3,7 +3,11 @@ title: re:Invent Workshop Setup
 sidebar_position: 20
 ---
 
-By participating in this workshop you will be provided with an AWS account to use to complete the lab material. Connect to the portal by browsing to [https://catalog.workshops.aws/](https://catalog.workshops.aws/), where the following screen shows up.
+To participate in this workshop, we have provided you an AWS account to use to complete the lab material. Connect to the portal by browsing to [https://catalog.workshops.aws/](https://catalog.workshops.aws/), where the following screen shows up.
+
+:::note
+If you've already joined the event, skip to the [Access your AWS Account and Console section](#access-your-aws-account-and-console) below.
+:::
 
 Click on **Get Started** and select the option **Email One-Time Password(OTP)** to proceed.
 
@@ -18,6 +22,8 @@ Your instructor should have provided you with an **Event access code** prior the
 Read and accept the Terms and Conditions and click **Join event** to continue.
 
 ![Review and Join](./assets/review-and-join.png)
+
+### Access your AWS Account and Console
 
 You will be presented with your personal dashboard. Press **Get Started** for basic information about the workshop.
 
