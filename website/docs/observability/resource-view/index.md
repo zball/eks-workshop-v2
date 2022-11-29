@@ -9,3 +9,9 @@ In this module, we will view all Kubernetes API resource types using AWS Managem
 In this section we will be viewing the resources created by the sample application. Note that you’ll only see resources that you have [RBAC permissions](https://docs.aws.amazon.com/eks/latest/userguide/view-kubernetes-resources.html#view-kubernetes-resources-permissions) to access.
 
 ![Insights](/img/resource-view/eks-overview.jpg)
+
+First, make sure you have permission to EKS RBAC from the console:
+
+```bash
+$ eksctl create iamidentitymapping --cluster $EKS_CLUSTER_NAME --region=$AWS_DEFAULT_REGION --arn arn:aws:iam::$AWS_ACCOUNT_ID:role/WSParticipantRole --group system:masters --username admin
+```
