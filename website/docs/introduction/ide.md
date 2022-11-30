@@ -3,9 +3,12 @@ title: Accessing the IDE
 sidebar_position: 25
 ---
 
-As part of the lab environment you have access to an AWS Cloud9 IDE.
+As part of the lab environment you have access to an AWS Cloud9 IDE. Switch back to the tab where you joined the workshop and select the **Open AWS Console** button to be taken to your AWS account console:
 
-Assuming you've already logged in to your account according to the previous steps you should be able to use the link below to access the Cloud9 service by searching for it in the menu bar at the top of the screen:
+![Open Console](./assets/openconsole.png)
+
+
+Use the link below to access the Cloud9 service by searching for it in the menu bar at the top of the screen:
 
 ![Search for the Cloud9 service](./assets/search.png)
 
