@@ -112,6 +112,12 @@ const config = {
             position: 'left',
             label: 'Automation',
           },
+          { 
+            type: 'doc',
+            docId: 'multitenancy/index',
+            position: 'left',
+            label: 'Multitenancy',
+          },
           {
             href: 'https://github.com/aws-samples/eks-workshop-v2',
             position: 'right',
